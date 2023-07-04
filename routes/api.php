@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserManagementController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,16 +20,25 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-Route::prefix("/v1")->group(function(){
+Route::prefix("/v1")->group(function () {
 
     // authentication routes
-    Route::controller(AuthController::class)->group(function(){
+    Route::controller(AuthController::class)->group(function () {
+        // reguster router
         Route::post('register', 'register');
+        // login router
         Route::post('login', 'login');
     });
 
-
-
-
+    // crud user routes
+    Route::controller(UserManagementController::class)->middleware("auth:sanctum")->group(function () {
+        // read router
+        Route::get("dashboard/user", "index");
+        // create router
+        Route::post("dashboard/user", "create");
+        // update router
+        Route::put("dashboard/user/{id}", "update");
+        // delete router
+        Route::delete("dashboard/user/{id}", "delete");
+    });
 });
-
