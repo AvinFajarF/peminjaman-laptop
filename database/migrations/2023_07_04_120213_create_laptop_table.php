@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string("code");
             $table->string("brand");
+            $table->enum("status", ["borrowed", "available"]);
             $table->timestamps();
         });
     }

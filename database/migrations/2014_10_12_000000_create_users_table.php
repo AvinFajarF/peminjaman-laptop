@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('address');
             $table->enum('class', ["10","11","12"]);
             $table->enum('role', ["siswa","guru"]);
+            $table->enum('status', ["banned","active"]);
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();

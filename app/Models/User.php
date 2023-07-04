@@ -49,6 +49,7 @@ class User extends Authenticatable
 
     protected $attributes = [
         'role' => "siswa",
+        'status' => "active",
     ];
 
 
