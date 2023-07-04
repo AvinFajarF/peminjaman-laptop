@@ -45,7 +45,8 @@ class AuthController extends Controller
         } catch (\Throwable $th) {
             return response()->json([
                 'status' => "error",
-                "massage" => "error"
+                "massage" => "error",
+                "error_message" => $th->getMessage(),
             ], 500);
         }
     }
