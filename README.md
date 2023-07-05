@@ -29,7 +29,7 @@ untuk menajalankan project
 ```
 
 | Parameter | Type     | Description                |
-|| :-------- | :------- | :------------------------- |
+| :-------- | :------- | :------------------------- |
 | `username` | `string` | **Required** |
 | `password` | `string` | **Required** |
 | `email` | `email` | **Required** |
@@ -66,7 +66,7 @@ untuk menajalankan project
 ```
 
 | Parameter | Type     | Description                |
-|| :-------- | :------- | :------------------------- |
+| :-------- | :------- | :------------------------- |
 | `username` | `string` | **Required** |
 | `password` | `string` | **Required** |
 | `email` | `email` | **Required** |
@@ -82,7 +82,7 @@ untuk menajalankan project
 ```
 
 | Parameter | Type     | Description                |
-|| :-------- | :------- | :------------------------- |
+| :-------- | :------- | :------------------------- |
 | `username` | `string` | **Optional** |
 | `password` | `string` | **Optional** |
 | `email` | `email` | **Optional** |
@@ -115,7 +115,7 @@ untuk menajalankan project
 ```
 
 | Parameter | Type     | Description                |
-|| :-------- | :------- | :------------------------- |
+| :-------- | :------- | :------------------------- |
 | `code` | `string` | **Required** |
 | `brand` | `string` | **Required** |
 
@@ -127,7 +127,7 @@ untuk menajalankan project
 ```
 
 | Parameter | Type     | Description                |
-|| :-------- | :------- | :------------------------- |
+| :-------- | :------- | :------------------------- |
 | `code` | `string` | **Optional** |
 | `brand` | `string` | **Optional** |
 
@@ -156,7 +156,7 @@ untuk menajalankan project
 ```
 
 | Parameter | Type     | Description                |
-|| :-------- | :------- | :------------------------- |
+| :-------- | :------- | :------------------------- |
 | `id` | `integer` | **Required** id laptop |
 
 
@@ -167,6 +167,6 @@ untuk menajalankan project
 ```
 
 | Parameter | Type     | Description                |
-|| :-------- | :------- | :------------------------- |
+| :-------- | :------- | :------------------------- |
 | `id` | `integer` | **Optional** id laptop |
 
