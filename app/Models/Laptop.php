@@ -22,4 +22,9 @@ class Laptop extends Model
         'status' => "available",
     ];
 
+    public function rentLogs()
+    {
+        return $this->belongsTo(RentLogs::class);
+    }
+
 }

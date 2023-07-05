@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LaptopManagementController;
+use App\Http\Controllers\LaptopRentalManagementController;
 use App\Http\Controllers\UserManagementController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -32,39 +33,40 @@ Route::prefix("/v1")->group(function () {
     });
 
     // group middelware routes
-    Route::middleware("auth:sanctum")->group(function() {
+    Route::middleware("auth:sanctum")->group(function () {
         // crud user routes
-    Route::controller(UserManagementController::class)->group(function () {
-        // read router
-        Route::get("dashboard/user", "index");
-        // create router
-        Route::post("dashboard/user", "create");
-        // update router
-        Route::put("dashboard/user/{id}", "update");
-        // delete router
-        Route::delete("dashboard/user/{id}", "delete");
+        Route::controller(UserManagementController::class)->group(function () {
+            // read router
+            Route::get("dashboard/user", "index");
+            // create router
+            Route::post("dashboard/user", "create");
+            // update router
+            Route::put("dashboard/user/{id}", "update");
+            // delete router
+            Route::delete("dashboard/user/{id}", "delete");
+        });
+
+
+        // crud laptop routes
+        Route::controller(LaptopManagementController::class)->group(function () {
+            // read router
+            Route::get("dashboard/laptop", "index");
+            // create router
+            Route::post("dashboard/laptop", "create");
+            // update router
+            Route::put("dashboard/laptop/{id}", "update");
+            // delete router
+            Route::delete("dashboard/laptop/{id}", "delete");
+        });
+
+
+        Route::controller(LaptopRentalManagementController::class)->group(function () {
+            // read router
+            Route::get("dashboard/laptop/rent", "index");
+            //    rental laptop
+            Route::post("laptop/rent/loan/{id}", "loan");
+            //    retrun laptop
+            Route::post("laptop/rent/return/{id}", "return");
+        });
     });
-
-
-    // crud laptop routes
-    Route::controller(LaptopManagementController::class)->group(function(){
-       // read router
-       Route::get("dashboard/laptop", "index");
-       // create router
-       Route::post("dashboard/laptop", "create");
-       // update router
-       Route::put("dashboard/laptop/{id}", "update");
-       // delete router
-       Route::delete("dashboard/laptop/{id}", "delete");
-    });
-});
-
-
-
-
-
-
-
-
-
 });
