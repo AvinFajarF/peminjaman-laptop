@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Laptop;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 
-class UserManagementController extends Controller
+class LaptopManagementController extends Controller
 {
+    // show all data laptop
+    public function index()
+    {
 
-    // show all users
-    public function index(){
         try {
-            // response json
+
             return response()->json([
                 'status' => "success",
                 "massage" => "show all users successfully",
-                "data" => User::all(),
+                "data" => Laptop::all(),
             ], 200);
         } catch (\Throwable $th) {
             return response()->json([
@@ -28,34 +28,23 @@ class UserManagementController extends Controller
     }
 
 
-    // create users
+    // create data laptop
     public function create(Request $request)
     {
         // request validation
-        $validasi = $request->validate(
-            [
-                "username" => "string|required",
-                "password" => "required",
-                "email" => "email|required",
-                "number_phone" => "integer|required",
-                "address" => "required",
-                "class" => "required",
-            ],
-        );
-
+        $validasi = $request->validate([
+            "code" => "required",
+            "brand" => "required",
+        ]);
 
         try {
 
+            // store to database
+            Laptop::create($validasi);
 
-            $validasi["password"] = Hash::make($validasi["password"]);
-            $user =  User::create($validasi);
-            $token = $user->createToken($request->email)->plainTextToken;
-
-            // response json
             return response()->json([
-                'status' => "success",
-                "massage" => "create user successfully",
-                "token" => $token,
+                "status" => "success",
+                "massage" => "create data successfully",
             ], 200);
         } catch (\Throwable $th) {
             return response()->json([
@@ -66,51 +55,47 @@ class UserManagementController extends Controller
         }
     }
 
+    // update data laptop
+    public function update(Request $request, $id)
+    {
 
-    // update user
-    public function update(Request $request, $id){
         try {
 
-            // find user
-            $userFind = User::findOrFail($id);
-            $userFind->update($request->all());
-
-
+            // find data laptop
+            $findLaptop = Laptop::findOrFail($id);
+            // update data laptop
+            $findLaptop->update($request->all());
+            // return response json
             return response()->json([
                 'status' => "success",
-                "massage" => "update account successfully",
+                "massage" => "update data successfully",
             ], 200);
-
         } catch (\Throwable $th) {
             return response()->json([
                 'status' => "error",
-                "massage" => "update account failed",
-                "error_message" => $th->getMessage(),
-            ], 500);
-        }
-
-    }
-
-
-    // delete
-    public function delete($id){
-        try {
-
-            $userFind = User::findOrFail($id);
-            $userFind->delete();
-            return response()->json([
-                'status' => "success",
-                "massage" => "delete account successfully",
-            ], 200);
-
-
-        } catch (\Throwable $th) {
-            return response()->json([
-                'status' => "error",
-                "massage" => "delete account failed",
+                "massage" => "error",
                 "error_message" => $th->getMessage(),
             ], 500);
         }
     }
 
+    // delete data laptop
+    public function delete($id)
+    {
+        try {
+
+            $laptopFind = Laptop::findOrFail($id);
+            $laptopFind->delete();
+            return response()->json([
+                'status' => "success",
+                "massage" => "delete data laptop successfully",
+            ], 200);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => "error",
+                "massage" => "delete data laptop failed",
+                "error_message" => $th->getMessage(),
+            ], 500);
+        }
+    }
 }
