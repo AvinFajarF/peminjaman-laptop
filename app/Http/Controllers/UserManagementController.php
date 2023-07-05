@@ -22,7 +22,6 @@ class UserManagementController extends Controller
             return response()->json([
                 'status' => "error",
                 "massage" => "error",
-                "error_message" => $th->getMessage(),
             ], 500);
         }
     }
@@ -61,7 +60,6 @@ class UserManagementController extends Controller
             return response()->json([
                 'status' => "error",
                 "massage" => "error",
-                "error_message" => $th->getMessage(),
             ], 500);
         }
     }
@@ -85,7 +83,6 @@ class UserManagementController extends Controller
             return response()->json([
                 'status' => "error",
                 "massage" => "update account failed",
-                "error_message" => $th->getMessage(),
             ], 500);
         }
 
@@ -108,7 +105,6 @@ class UserManagementController extends Controller
             return response()->json([
                 'status' => "error",
                 "massage" => "delete account failed",
-                "error_message" => $th->getMessage(),
             ], 500);
         }
     }

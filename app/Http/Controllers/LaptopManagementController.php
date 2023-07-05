@@ -22,7 +22,6 @@ class LaptopManagementController extends Controller
             return response()->json([
                 'status' => "error",
                 "massage" => "error",
-                "error_message" => $th->getMessage(),
             ], 500);
         }
     }
@@ -50,7 +49,6 @@ class LaptopManagementController extends Controller
             return response()->json([
                 'status' => "error",
                 "massage" => "error",
-                "error_message" => $th->getMessage(),
             ], 500);
         }
     }
@@ -74,7 +72,6 @@ class LaptopManagementController extends Controller
             return response()->json([
                 'status' => "error",
                 "massage" => "error",
-                "error_message" => $th->getMessage(),
             ], 500);
         }
     }
@@ -94,7 +91,6 @@ class LaptopManagementController extends Controller
             return response()->json([
                 'status' => "error",
                 "massage" => "delete data laptop failed",
-                "error_message" => $th->getMessage(),
             ], 500);
         }
     }
