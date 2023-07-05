@@ -12,18 +12,16 @@ class UserManagementController extends Controller
     // show all users
     public function index(){
         try {
-            $userAll = User::all();
             // response json
             return response()->json([
                 'status' => "success",
                 "massage" => "show all users successfully",
-                "data" => $userAll,
+                "data" => User::all(),
             ], 200);
         } catch (\Throwable $th) {
             return response()->json([
                 'status' => "error",
                 "massage" => "error",
-                "error_message" => $th->getMessage(),
             ], 500);
         }
     }
@@ -62,7 +60,6 @@ class UserManagementController extends Controller
             return response()->json([
                 'status' => "error",
                 "massage" => "error",
-                "error_message" => $th->getMessage(),
             ], 500);
         }
     }
@@ -86,7 +83,6 @@ class UserManagementController extends Controller
             return response()->json([
                 'status' => "error",
                 "massage" => "update account failed",
-                "error_message" => $th->getMessage(),
             ], 500);
         }
 
@@ -109,7 +105,6 @@ class UserManagementController extends Controller
             return response()->json([
                 'status' => "error",
                 "massage" => "delete account failed",
-                "error_message" => $th->getMessage(),
             ], 500);
         }
     }
