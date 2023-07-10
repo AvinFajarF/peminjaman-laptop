@@ -33,9 +33,9 @@ Route::prefix("/v1")->group(function () {
     });
 
     // group middelware routes
-    Route::middleware("auth:sanctum")->group(function () {
+    Route::middleware(["auth:sanctum", "check.status.user"])->group(function () {
         // crud user routes
-        Route::controller(UserManagementController::class)->group(function () {
+        Route::controller(UserManagementController::class)->middleware("admin.check")->group(function () {
             // read router
             Route::get("dashboard/user", "index");
             // create router
@@ -48,7 +48,7 @@ Route::prefix("/v1")->group(function () {
 
 
         // crud laptop routes
-        Route::controller(LaptopManagementController::class)->group(function () {
+        Route::controller(LaptopManagementController::class)->middleware("admin.check")->group(function () {
             // read router
             Route::get("dashboard/laptop", "index");
             // create router
@@ -62,7 +62,7 @@ Route::prefix("/v1")->group(function () {
 
         Route::controller(LaptopRentalManagementController::class)->group(function () {
             // read router
-            Route::get("dashboard/laptop/rent", "index");
+            Route::get("dashboard/laptop/rent", "index")->middleware("admin.check");
             //    rental laptop
             Route::post("laptop/rent/loan/{id}", "loan");
             //    retrun laptop

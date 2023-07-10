@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Laptop;
 use App\Models\RentLogs;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class LaptopRentalManagementController extends Controller
