@@ -44,6 +44,8 @@ Route::prefix("/v1")->group(function () {
             Route::put("dashboard/user/{id}", "update");
             // delete router
             Route::delete("dashboard/user/{id}", "delete");
+            // banned router
+            Route::delete("dashboard/user/ban/{id}", "blockUser");
         });
 
 

@@ -109,4 +109,26 @@ class UserManagementController extends Controller
         }
     }
 
+
+    // block user
+    public function blockUser($id){
+        try {
+
+            $userFind = User::findOrFail($id);
+            $userFind->status = "banned";
+            $userFind->save();
+            return response()->json([
+                'status' => "success",
+                "massage" => "banned account successfully",
+            ], 200);
+
+
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => "error",
+                "massage" => "banned account failed",
+            ], 500);
+        }
+    }
+
 }
