@@ -33,7 +33,7 @@ Route::prefix("/v1")->group(function () {
     });
 
     // group middelware routes
-    Route::middleware("auth:sanctum")->group(function () {
+    Route::middleware(["auth:sanctum", "check.status.user"])->group(function () {
         // crud user routes
         Route::controller(UserManagementController::class)->middleware("admin.check")->group(function () {
             // read router
