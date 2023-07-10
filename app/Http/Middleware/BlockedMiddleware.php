@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class BlockedMiddleware
@@ -15,6 +16,11 @@ class BlockedMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
+        if (Auth::user()->status != "active") {
+           return response()->json([
+            "massage" => "you blocked"
+           ], 401);
+        }
         return $next($request);
     }
 }
