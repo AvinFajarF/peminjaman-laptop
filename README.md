@@ -40,7 +40,7 @@ untuk menajalankan project
 #### login
 
 ```http
-  GET /api/v1/login
+  POST /api/v1/login
 ```
 
 | Parameter | Type     | Description                       |
