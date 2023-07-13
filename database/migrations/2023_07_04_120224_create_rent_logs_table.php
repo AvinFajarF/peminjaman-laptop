@@ -16,11 +16,11 @@ return new class extends Migration
             // user relations
             $table->unsignedBigInteger('user_id');
 
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             // laptop relations
             $table->unsignedBigInteger('laptop_id');
 
-            $table->foreign('laptop_id')->references('id')->on('laptop');
+            $table->foreign('laptop_id')->references('id')->on('laptop')->onDelete('cascade');
 
             $table->string("return_date");
             $table->string("loan_date");
